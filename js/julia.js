@@ -1,13 +1,12 @@
-class Mandelbrot {
+class Julia {
     constructor(pixels, width, height) {
         this.pixels = pixels;
+        let ca = -.2321;
+        let cb = -0.835;
         for(let x = 0; x < width; x++){
             for(let y = 0; y < height; y++){
                 let a = map(x, 0, width, -2, 2);
                 let b = map(y, 0, height, -2, 2);
-
-                let ca = a;
-                let cb = b;
 
                 let n = 0;
 

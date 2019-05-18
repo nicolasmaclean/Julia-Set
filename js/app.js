@@ -1,7 +1,9 @@
 const canvas = document.getElementById('canvas');
 const c = canvas.getContext('2d');
 
-let mandelbrot;
+let fractal;
+const iterations = 100;
+const infinLimit = 2;
 
 function init() {
     if(canvas.width > canvas.height){
@@ -16,9 +18,10 @@ function init() {
     c.fillRect(0, 0, canvas.width, canvas.height);
 
     let pixels = c.createImageData(canvas.width, canvas.height);
-    mandelbrot = new Mandelbrot(pixels, canvas.width, canvas.height);
+    fractal = new Mandelbrot(pixels, canvas.width, canvas.height);
+    // fractal = new Julia(pixels, canvas.width, canvas.height);
 
-    mandelbrot.draw();
+    fractal.draw();
 }
 
 window.addEventListener('resize', init);
