@@ -16,8 +16,57 @@
         }
     </style>
 </head>
+
 <body>
+    <div id="sliders">
+        <div class="container">
+            <label>Mandelbrot Set</label>
+            <input type="radio" id="mandelbrot" name="set" checked>
+            <label>Julia Set</label>
+            <input type="radio" id="julia" name="set">
+        </div>
+
+        <div class="container">
+            <label>Gray Scale</label>
+            <input type="radio" id="rgb" name="color" checked>
+            <label>HSL</label>
+            <input type="radio" id="hsl" name="color">
+        </div>
+
+        <div class="container">
+            Iterations
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="iterationsText">
+            <input type="range" id="iterationsRange">
+        </div>
+        
+        <div class="container">
+            Minimum Color Value
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="minColorText">
+            <input type="range" id="minColorRange"> <br/>
+            Max Color Value
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="maxColorText">
+            <input type="range" id="maxColorRange">
+        </div>
+        
+        <div class="container">
+            Escape Sequence
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="escapeText">
+            <input type="range" id="escapeRange">
+        </div>
+
+        <div class="container">
+            Constants For The Julia Set <br/>
+            Constant A
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="aText">
+            <input type="range" id="aRange"> <br/>
+            Constant B
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="bText">
+            <input type="range" id="bRange">
+        </div>
+    </div>
+
     <canvas id="canvas"></canvas>
+
     <script src="js/julia.js"></script>
     <script src="js/mandelbrot.js"></script>
     <script src="js/app.js"></script>
