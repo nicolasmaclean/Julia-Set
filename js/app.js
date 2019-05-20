@@ -96,25 +96,25 @@ escapeRange.addEventListener('input', () => {
 })
 
 aText.addEventListener('input', () => {
-    ca = aText.value;
+    ca = parseFloat(aText.value);
     aRange.value = ca;
     init();
 })
 
 aRange.addEventListener('input', () => {
-    ca = aRange.value;
+    ca = parseFloat(aRange.value);
     aText.value = ca;
     init();
 })
 
 bText.addEventListener('input', () => {
-    cb = bText.value;
+    cb = parseFloat(bText.value);
     bRange.value = cb;
     init();
 })
 
 bRange.addEventListener('input', () => {
-    cb = bRange.value;
+    cb = parseFloat(bRange.value);
     bText.value = cb;
     init();
 })
@@ -123,8 +123,8 @@ iterationsRange.max = 200;
 iterationsRange.value = iterations;
 iterationsText.value = iterations;
 
-minColorRange.max = 360;
-maxColorRange.max = 360;
+minColorRange.max = hslTop;
+maxColorRange.max = hslTop;
 
 minColorRange.value = hslBot;
 minColorText.value = hslBot;
@@ -166,7 +166,7 @@ function init() {
     } else {
         fractal = new Mandelbrot(pixels, canvas.width, canvas.height);
     }
-
+    
     fractal.draw();
 }
 
