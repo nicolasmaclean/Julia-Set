@@ -23,7 +23,7 @@ class Z3 {
                     n++;
                 }
                 
-                n = (a+b)%255;
+                // n = (a+b)%255;
                 // n = ((a+b)*(a+b))%255;
                 let pixInd = (y * width + x) * 4;
                 if(hsl){
