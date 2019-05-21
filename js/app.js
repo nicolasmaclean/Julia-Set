@@ -3,6 +3,7 @@ const c = canvas.getContext('2d');
 
 const mandelbrotRad = document.getElementById('mandelbrot');
 const juliaRad = document.getElementById('julia');
+const multiRad = document.getElementById('multi');
 
 const rgbBox = document.getElementById('rgb');
 const hslBox = document.getElementById('hsl');
@@ -25,7 +26,7 @@ const bRange = document.getElementById('bRange');
 
 let fractal;
 let pixels;
-let fractalType = false;
+let fractalType = 0;
 var iterations = 100;
 var infinLimit = 16;
 var hslBot = 0;
@@ -35,12 +36,17 @@ var ca = -.2321;
 var cb = -0.835;
 
 mandelbrotRad.addEventListener('change', () => {
-    fractalType = false;
+    fractalType = 0;
     init();
 })
 
 juliaRad.addEventListener('change', () => {
-    fractalType = true;
+    fractalType = 1;
+    init();
+})
+
+multiRad.addEventListener('change', () => {
+    fractalType = 2;
     init();
 })
 
@@ -161,10 +167,10 @@ function init() {
     c.fillRect(0, 0, canvas.width, canvas.height);
 
     pixels = c.createImageData(canvas.width, canvas.height);
-    if(fractalType){
-        fractal = new Julia(pixels, canvas.width, canvas.height);
-    } else {
-        fractal = new Mandelbrot(pixels, canvas.width, canvas.height);
+    switch(fractalType){
+        case 0: fractal = new Mandelbrot(pixels, canvas.width, canvas.height); break;
+        case 1: fractal = new Julia(pixels, canvas.width, canvas.height); break;
+        case 2: fractal = new Z3(pixels, canvas.width, canvas.height); break;
     }
     
     fractal.draw();

@@ -13,7 +13,9 @@
             display:flex;
             justify-content: center;
             background: #fff;
+            align-items: center;
         }
+
     </style>
 </head>
 
@@ -24,6 +26,8 @@
             <input type="radio" id="mandelbrot" name="set" checked>
             <label>Julia Set</label>
             <input type="radio" id="julia" name="set">
+            <label>Multibrot Set</label>
+            <input type="radio" id="multi" name="set">
         </div>
 
         <div class="container">
@@ -67,6 +71,7 @@
 
     <canvas id="canvas"></canvas>
 
+    <script src="js/z3.js"></script>
     <script src="js/julia.js"></script>
     <script src="js/mandelbrot.js"></script>
     <script src="js/app.js"></script>
