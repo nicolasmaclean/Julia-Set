@@ -160,8 +160,13 @@ function init() {
     //     canvas.width = window.innerWidth;
     //     canvas.height = canvas.width;
     // }
-    canvas.width = 500;
-    canvas.height = 500;
+    if(window.innerHeight > 500){
+        canvas.height = 500;
+        canvas.width = 500;
+    } else {
+        canvas.height = window.innerHeight;
+        canvas.width = canvas.height;
+    }
 
     c.fillStyle = "#282828";
     c.fillRect(0, 0, canvas.width, canvas.height);
