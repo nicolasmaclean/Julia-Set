@@ -6,6 +6,9 @@ class Z3 {
                 var a = map(x, 0, width, -2, 2);
                 var b = map(y, 0, height, -2, 2);
                 
+                let ca = a;
+                let cb = b;
+                
                 let n = 0;
                 let z = a+b;
                 
