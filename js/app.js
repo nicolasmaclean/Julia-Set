@@ -4,17 +4,17 @@ const c = canvas.getContext('2d');
 const mandelbrotRad = document.getElementById('mandelbrot');
 const juliaRad = document.getElementById('julia');
 const multiRad = document.getElementById('multi');
+const coolRad = document.getElementById('cool');
 
 const rgbBox = document.getElementById('rgb');
 const hslBox = document.getElementById('hsl');
+const hueBox = document.getElementById('huemode')
 
 const iterationsText = document.getElementById('iterationsText');
 const iterationsRange = document.getElementById('iterationsRange');
 
-const minColorText = document.getElementById('minColorText');
-const maxColorText = document.getElementById('maxColorText');
-const minColorRange = document.getElementById('minColorRange');
-const maxColorRange = document.getElementById('maxColorRange');
+const colorText = document.getElementById('colorText');
+const colorRange = document.getElementById('colorRange');
 
 const escapeText = document.getElementById('escapeText');
 const escapeRange = document.getElementById('escapeRange');
@@ -29,9 +29,8 @@ let pixels;
 let fractalType = 0;
 var iterations = 100;
 var infinLimit = 16;
-var hslBot = 0;
-var hslTop = 360;
-var hsl = false;
+var hue = 360;
+var hsl = 0;
 var ca = -.2321;
 var cb = -0.835;
 
@@ -50,13 +49,23 @@ multiRad.addEventListener('change', () => {
     init();
 })
 
+coolRad.addEventListener('change', () => {
+    fractalType = 3;
+    init();
+})
+
 rgbBox.addEventListener('change', () => {
-    hsl = false;
+    hsl = 0;
     init();
 })
 
 hslBox.addEventListener('change', () => {
-    hsl = true;
+    hsl = 1;
+    init();
+})
+
+hueBox.addEventListener('change', () => {
+    hsl = 2;
     init();
 })
 
@@ -72,20 +81,15 @@ iterationsRange.addEventListener('input', () => {
     init();
 })
 
-minColorRange.addEventListener('input', () => {
-    hslBot = minColorRange.value;
-    minColorText.value = hslBot;
+colorRange.addEventListener('input', () => {
+    hue = colorRange.value;
+    colorText.value = hue;
     init();
 })
 
-minColorText.addEventListener('input', () => {
-    hslBot = minColorText.value;
-    minColorRange.value = hslBot;
-})
-
-maxColorRange.addEventListener('input', () => {
-    hslTop = maxColorRange.value;
-    maxColorText.value = hslTop;
+colorText.addEventListener('input', () => {
+    hue = colorText.value;
+    colorRange.value = hue;
     init();
 })
 
@@ -129,13 +133,11 @@ iterationsRange.max = 200;
 iterationsRange.value = iterations;
 iterationsText.value = iterations;
 
-minColorRange.max = hslTop;
-maxColorRange.max = hslTop;
+colorRange.max = 0;
+colorRange.max = 360;
 
-minColorRange.value = hslBot;
-minColorText.value = hslBot;
-maxColorRange.value = hslTop;
-maxColorText.value = hslTop;
+colorRange.value = hue;
+colorText.value = hue;
 
 escapeRange.value = infinLimit;
 escapeText.value = infinLimit;
@@ -176,6 +178,7 @@ function init() {
         case 0: fractal = new Mandelbrot(pixels, canvas.width, canvas.height); break;
         case 1: fractal = new Julia(pixels, canvas.width, canvas.height); break;
         case 2: fractal = new Z3(pixels, canvas.width, canvas.height); break;
+        case 3: fractal = new Cool(pixels, canvas.width, canvas.height); break;
     }
     
     fractal.draw();

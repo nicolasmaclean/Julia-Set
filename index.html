@@ -27,6 +27,8 @@
             <input type="radio" id="julia" name="set">
             <label>Multibrot Set</label>
             <input type="radio" id="multi" name="set">
+            <label>Cool set</label>
+            <input type="radio" id="cool" name="set">
         </div>
 
         <div class="container">
@@ -34,6 +36,8 @@
             <input type="radio" id="rgb" name="color" checked>
             <label>HSL</label>
             <input type="radio" id="hsl" name="color">
+            <label>Hue and Lightness</label>
+            <input type="radio" id="huemode" name="color">
         </div>
 
         <div class="container">
@@ -43,12 +47,9 @@
         </div>
         
         <div class="container">
-            Minimum Color Value
-            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="minColorText">
-            <input type="range" id="minColorRange"> <br/>
-            Max Color Value
-            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="maxColorText">
-            <input type="range" id="maxColorRange">
+            Color Hue
+            <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" id="colorText">
+            <input type="range" id="colorRange"> <br/>
         </div>
         
         <div class="container">
@@ -70,6 +71,7 @@
 
     <canvas id="canvas"></canvas>
 
+    <script src="js/cool.js"></script>
     <script src="js/z3.js"></script>
     <script src="js/julia.js"></script>
     <script src="js/mandelbrot.js"></script>

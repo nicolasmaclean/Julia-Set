@@ -8,7 +8,7 @@ class Z3 {
                 
                 let ca = a;
                 let cb = b;
-                
+
                 let n = 0;
                 let z = a+b;
                 
@@ -30,13 +30,17 @@ class Z3 {
                 // n = ((a+b)*(a+b))%255;
                 let pixInd = (y * width + x) * 4;
                 if(hsl){
-                    let brightness = map(n, 0, iterations, hslBot, hslTop);
+                    let brightness = map(n, 0, iterations, 0, 360);
                     if(n == iterations){
                         brightness = 0;
                     }
-                    brightness = brightness;
                     
-                    let rgb = hslToRgb(brightness, 100, 50);
+                    let rgb;
+                    if(hsl === 1){
+                        rgb = hslToRgb(brightness, 100, 50);
+                    } else if(hsl ===2){
+                        rgb = hslToRgb(hue, 100, brightness);
+                    }
                     this.pixels.data[pixInd] = rgb.r; //red
                     this.pixels.data[pixInd+1] = rgb.g; //green
                     this.pixels.data[pixInd+2] = rgb.b; //blue

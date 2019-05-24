@@ -29,19 +29,23 @@ class Mandelbrot {
                 // n = (a+b)%255;
                 // n = ((a+b)*(a+b))%255;
                 let pixInd = (y * width + x) * 4;
-                if(hsl){
-                    let brightness = map(n, 0, iterations, hslBot, hslTop);
+                if(hsl === 1 || hsl === 2){
+                    let brightness = map(n, 0, iterations, 0, 100);
                     if(n == iterations){
                         brightness = 0;
                     }
-                    brightness = brightness;
                     
-                    let rgb = hslToRgb(brightness, 100, 50);
+                    let rgb;
+                    if(hsl === 1){
+                        rgb = hslToRgb(brightness, 100, 50);
+                    } else if(hsl ===2){
+                        rgb = hslToRgb(hue, 100, brightness);
+                    }
                     this.pixels.data[pixInd] = rgb.r; //red
                     this.pixels.data[pixInd+1] = rgb.g; //green
                     this.pixels.data[pixInd+2] = rgb.b; //blue
                     this.pixels.data[pixInd+3] = 255; //alpha
-                } else {
+                } else if(hsl === 0){
                     // let brightness = map(n, 0, iterations, 0, 255);
                     let brightness = map(n, 0, iterations, 0, 255);
                     if(n == iterations){
